@@ -78,8 +78,8 @@ export default class AppIntroSlider extends React.Component {
         {this.props.renderItem ? (
           this.props.renderItem(props)
         ) : (
-          <DefaultSlide bottomButton={this.props.bottomButton} {...props} />
-        )}
+            <DefaultSlide bottomButton={this.props.bottomButton} {...props} />
+          )}
       </View>
     );
   };
@@ -131,7 +131,9 @@ export default class AppIntroSlider extends React.Component {
     );
   };
 
-  _renderNextButton = () => this._renderButton('Next', this._onNextPress);
+  _renderNextButton = () => this._renderButton('Next', () =>
+    this.props.onNext ? this.props.onNext() : this._onNextPress()
+  );
 
   _renderPrevButton = () => this._renderButton('Prev', this._onPrevPress);
 
